@@ -1,4 +1,4 @@
-# 🎬 Overlabs - Teste Técnico (Estágio Backend Node.js)
+# 🎬 Overlabs - Teste Técnico (Backend Node.js)
 
 Este repositório contém a solução do teste técnico para a vaga de assistente backend na **Overlabs**. A aplicação consiste em uma API REST desenvolvida em **Node.js** com **TypeScript**, **Express** e **Vitest**, responsável por consumir uma API de metadados de filmes, processar e transformar as informações conforme as regras de negócio especificadas, e disponibilizá-las no endpoint `GET /filmes`.
 O documento sugere a utilização de algumas IAs. Pessoalmente, utilizei o antigravity pelo terminal, pois acelerou muito o processo de desenvolvimento principalmente na parte de testes e docs. Considero essencial a utilização de forma controlada, pela velocidade na hora de codar e por ser um excelente tira-dúvidas.
