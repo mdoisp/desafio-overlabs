@@ -1,0 +1,15 @@
+node_modules/
+dist/
+coverage/
+.env
+*.log
+
+# Arquivos locais e estudos privados
+ESTUDO.md
+*.local.md
+notes/
+private/
+
+# PDFs do teste (não devem ser expostos em repositório público)
+*.pdf
+
