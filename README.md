@@ -24,7 +24,7 @@ Atendendo ao **Objetivo 1** do desafio (*"Crie um documento relatando os passos 
 
 ### 1. Análise dos Requisitos e Exploração dos Dados
 - Leitura e interpretação do documento de especificação (`Desafio_Estagio_Backend_NodeJS.pdf`).
-- Realização de requisições exploratórias à API externa (`https://tv5hn2gvyijpl76yxlmsy66jwa0nlmxn.lambda-url.us-east-1.on.aws/`) para mapear os tipos e variações dos dados:
+- Realização de requisições exploratórias à API externa fornecida no desafio para mapear os tipos e variações dos dados:
   - Formato monetário com strings contendo milhões e bilhões (ex.: `"$6 milhões"`, `"$1.142 bilhão"`, `"$2.208 bilhões"`).
   - Listas de premiações com relevância numérica.
   - Variação de idiomas nas sinopses (`pt-br`, `en`, `fr`, etc.), identificando casos onde filmes possuem apenas inglês (ex.: *O Senhor dos Anéis*) ou apenas francês (ex.: *Matrix*).
@@ -128,7 +128,7 @@ Crie o arquivo `.env` baseado no `.env.example`:
 ```bash
 cp .env.example .env
 ```
-*(As configurações padrão já apontam para a porta 3000 e para a URL da API da Overlabs).*
+*(Preencha a variável `FILMES_API_URL` no `.env` com a URL fornecida na descrição do teste).*
 
 ### 3. Executar em modo desenvolvimento
 ```bash

@@ -9,6 +9,12 @@ export class MovieApiClient {
   }
 
   async fetchRawMovies(): Promise<RawMovie[]> {
+    if (!this.baseUrl) {
+      throw new Error(
+        'A variável de ambiente FILMES_API_URL não foi configurada. Crie o arquivo .env a partir de .env.example informando a URL da API.'
+      );
+    }
+
     try {
       const response = await fetch(this.baseUrl, {
         signal: AbortSignal.timeout(10_000),
