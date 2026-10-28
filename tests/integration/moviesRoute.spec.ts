@@ -19,7 +19,6 @@ describe('Integração - Rotas da API', () => {
 
     const firstMovie = res.body[0];
 
-    // Validação de propriedades esperadas
     expect(firstMovie).toHaveProperty('titulo');
     expect(firstMovie).toHaveProperty('ano');
     expect(firstMovie).toHaveProperty('diretor');
@@ -30,13 +29,11 @@ describe('Integração - Rotas da API', () => {
     expect(firstMovie).toHaveProperty('maiorPremiacao');
     expect(firstMovie).toHaveProperty('sinopse');
 
-    // Validação de tipos
     expect(typeof firstMovie.duracaoSegundos).toBe('number');
     expect(typeof firstMovie.notaIMDb).toBe('string');
     expect(typeof firstMovie.lucro).toBe('string');
     expect(typeof firstMovie.sinopse).toBe('string');
 
-    // Validação de remoção de propriedades
     expect(firstMovie).not.toHaveProperty('locacoes');
     expect(firstMovie).not.toHaveProperty('poster');
     expect(firstMovie).not.toHaveProperty('trailer');

@@ -8,13 +8,10 @@ export class MovieApiClient {
     this.baseUrl = baseUrl;
   }
 
-  /**
-   * Realiza a requisição HTTP para a API externa de metadados.
-   */
   async fetchRawMovies(): Promise<RawMovie[]> {
     try {
       const response = await fetch(this.baseUrl, {
-        signal: AbortSignal.timeout(10000), // Timeout de 10s
+        signal: AbortSignal.timeout(10_000),
         headers: {
           Accept: 'application/json',
         },

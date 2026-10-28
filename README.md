@@ -1,6 +1,8 @@
 # 🎬 Overlabs - Teste Técnico (Estágio Backend Node.js)
 
-Este repositório contém a solução do teste técnico para a vaga de estágio backend na **Overlabs**. A aplicação consiste em uma API REST desenvolvida em **Node.js** com **TypeScript**, **Express** e **Vitest**, responsável por consumir uma API de metadados de filmes, processar e transformar as informações conforme as regras de negócio especificadas, e disponibilizá-las no endpoint `GET /filmes`.
+Este repositório contém a solução do teste técnico para a vaga de assistente backend na **Overlabs**. A aplicação consiste em uma API REST desenvolvida em **Node.js** com **TypeScript**, **Express** e **Vitest**, responsável por consumir uma API de metadados de filmes, processar e transformar as informações conforme as regras de negócio especificadas, e disponibilizá-las no endpoint `GET /filmes`.
+O documento sugere a utilização de algumas IAs. Pessoalmente, utilizei o antigravity pelo terminal, pois acelerou muito o processo de desenvolvimento principalmente na parte de testes e docs. Considero essencial a utilização de forma controlada, pela velocidade na hora de codar e por ser um excelente tira-dúvidas.
+Optei por criar um readme completo, contemplando desde as stacks utilizadas, decisões tomadas... até a estrutura do projeto e suas respostas esperadas. Um ponto de destaque foi o elenco, pois observei que não existe uma tratativa quanto a este quesito, então optei por deixá-lo opcional.
 
 ---
 
@@ -21,7 +23,7 @@ Este repositório contém a solução do teste técnico para a vaga de estágio 
 Atendendo ao **Objetivo 1** do desafio (*"Crie um documento relatando os passos que você trilhou para chegar no resultado final"*), abaixo detalho toda a trajetória de desenvolvimento:
 
 ### 1. Análise dos Requisitos e Exploração dos Dados
-- Leitura atenta do documento de especificação (`Desafio_Estagio_Backend_NodeJS.pdf`).
+- Leitura e interpretação do documento de especificação (`Desafio_Estagio_Backend_NodeJS.pdf`).
 - Realização de requisições exploratórias à API externa (`https://tv5hn2gvyijpl76yxlmsy66jwa0nlmxn.lambda-url.us-east-1.on.aws/`) para mapear os tipos e variações dos dados:
   - Formato monetário com strings contendo milhões e bilhões (ex.: `"$6 milhões"`, `"$1.142 bilhão"`, `"$2.208 bilhões"`).
   - Listas de premiações com relevância numérica.
@@ -29,13 +31,13 @@ Atendendo ao **Objetivo 1** do desafio (*"Crie um documento relatando os passos 
 
 ### 2. Escolha da Stack e Ferramental
 - **TypeScript**: Adotado para fornecer tipagem estática rigorosa, garantindo segurança ao manipular contratos de dados brutos e parseados, além de evitar erros em tempo de execução.
-- **Express**: Framework web minimalista, amplamente utilizado no ecossistema Node.js, ideal para a criação de rotas e middlewares de forma clara.
-- **Vitest**: Test runner moderno, ultrarrápido e com suporte nativo a TypeScript sem overhead de configuração. Executa diretamente em ambiente Node.js.
+- **Express**: Framework web minimalista, amplamente utilizado no ecossistema Node.js, ideal para a criação de rotas e middlewares de forma clara, algo que já utilizei em projetos anteriores.
+- **Vitest**: Test runner moderno, foi mais um "plus" que achei interessante implementar com a ajuda do antigravity, para acelerar o desenvolvimento.
 - **Supertest**: Para testes de integração de ponta a ponta simulando requisições HTTP nas rotas da aplicação.
 - **TSX**: Executor ágil de TypeScript para o ambiente de desenvolvimento (`watch mode`).
 
 ### 3. Modularização e Funções Puras (Princípios SOLID)
-Optou-se por isolar cada regra de transformação em módulos utilitários e funções puras (fáceis de testar e livres de efeitos colaterais):
+Optei por isolar cada regra de transformação em módulos utilitários e funções puras (fáceis de testar e livres de efeitos colaterais):
 - `currencyParser`: Responsável por converter strings como `"$6 milhões"` e `"$1.142 bilhão"` em números reais, calcular a diferença (`bilheteria - orcamento`) e formatar a saída em string legível (`"$239 milhões"`, `"$1.048 bilhões"`).
 - `synopsisParser`: Implementa o algoritmo de busca prioritária da sinopse (`pt-br` ➔ `en` ➔ primeira ocorrência).
 - `awardParser`: Varre os prêmios identificando o de maior relevância via `Array.prototype.reduce`.

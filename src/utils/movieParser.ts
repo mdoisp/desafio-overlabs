@@ -8,11 +8,6 @@ export interface ParseMovieOptions {
   includeElenco?: boolean;
 }
 
-/**
- * Transforma um objeto de filme bruto no formato exigido pela plataforma.
- * Converte duração para segundos, calcula lucro, seleciona maior premiação,
- * extrai nota IMDb, resolve sinopse prioritária e remove campos desnecessários.
- */
 export function parseMovie(movie: RawMovie, options: ParseMovieOptions = {}): ParsedMovie {
   const duracaoSegundos = (movie.duracao ?? 0) * 60;
   const lucro = calculateProfit(movie.orcamento, movie.bilheteria);
@@ -39,9 +34,6 @@ export function parseMovie(movie: RawMovie, options: ParseMovieOptions = {}): Pa
   return parsed;
 }
 
-/**
- * Mapeia uma lista de filmes brutos para o formato parseado.
- */
 export function parseMovieList(movies: RawMovie[], options: ParseMovieOptions = {}): ParsedMovie[] {
   return movies.map((movie) => parseMovie(movie, options));
 }

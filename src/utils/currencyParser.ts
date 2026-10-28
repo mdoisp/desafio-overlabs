@@ -1,10 +1,6 @@
-/**
- * Converte strings monetárias no formato como "$6 milhões", "$1.142 bilhão" para número.
- */
 export function parseMonetaryValue(value: string): number {
   if (!value || typeof value !== 'string') return 0;
 
-  // Remove caracteres que não sejam dígitos, pontos, vírgulas, espaços ou letras
   const sanitized = value.trim().toLowerCase().replace(/[^0-9.,a-zá-ú]/gi, ' ');
   const match = sanitized.match(/([0-9]+(?:[.,][0-9]+)?)\s*(milh[ãa]o|milh[õo]es|bilh[ãa]o|bilh[õo]es|mil)?/i);
 
@@ -33,9 +29,6 @@ export function parseMonetaryValue(value: string): number {
   return numericValue;
 }
 
-/**
- * Formata um valor numérico para a representação em string (ex.: "$239 milhões", "$1.4 bilhões").
- */
 export function formatMonetaryValue(value: number): string {
   const isNegative = value < 0;
   const absValue = Math.abs(value);
@@ -43,7 +36,6 @@ export function formatMonetaryValue(value: number): string {
 
   if (absValue >= 1_000_000_000) {
     const inBillions = absValue / 1_000_000_000;
-    // Arredonda para até 3 casas decimais eliminando zeros à direita
     const formatted = parseFloat(inBillions.toFixed(3));
     const suffix = formatted === 1 ? 'bilhão' : 'bilhões';
     return `${prefix}${formatted} ${suffix}`;
@@ -65,9 +57,6 @@ export function formatMonetaryValue(value: number): string {
   return `${prefix}${absValue}`;
 }
 
-/**
- * Calcula o lucro (bilheteria - orcamento) e retorna como string formatada.
- */
 export function calculateProfit(orcamento: string, bilheteria: string): string {
   const orcamentoNum = parseMonetaryValue(orcamento);
   const bilheteriaNum = parseMonetaryValue(bilheteria);
